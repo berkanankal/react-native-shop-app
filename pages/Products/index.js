@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { ScrollView, Text, View, FlatList } from "react-native";
 import axios from "axios";
 import styles from "./Products.style";
+import ProductCard from "../../components/ProductCard";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -22,10 +23,10 @@ const Products = () => {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <View>
       <FlatList
         data={products}
-        renderItem={({ item }) => <Text>{item.title}</Text>}
+        renderItem={({ item }) => <ProductCard product={item} />}
       />
     </View>
   );

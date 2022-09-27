@@ -10,8 +10,18 @@ const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="ProductsPage" component={Products} />
+      <Stack.Navigator initialRouteName="ProductsPage">
+        <Stack.Screen
+          name="ProductsPage"
+          component={Products}
+          options={{
+            title: "Dükkan",
+            headerStyle: { backgroundColor: "#03a9f4" },
+            headerTintColor: "#fff",
+            headerTitleStyle: { fontWeight: "bold" },
+            headerTitleAlign: "center",
+          }}
+        />
         <Stack.Screen name="ProductDetailsPage" component={ProductDetails} />
       </Stack.Navigator>
     </NavigationContainer>
