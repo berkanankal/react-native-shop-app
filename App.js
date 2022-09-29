@@ -22,7 +22,17 @@ export default function App() {
             headerTitleAlign: "center",
           }}
         />
-        <Stack.Screen name="ProductDetailsPage" component={ProductDetails} />
+        <Stack.Screen
+          name="ProductDetailsPage"
+          component={ProductDetails}
+          options={{
+            title: "Detay",
+            headerStyle: { backgroundColor: "#03a9f4" },
+            headerTintColor: "#fff",
+            headerTitleStyle: { fontWeight: "bold" },
+            headerTitleAlign: "center",
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -4,8 +4,10 @@ import axios from "axios";
 import styles from "./Products.style";
 import ProductCard from "../../components/ProductCard";
 
-const Products = () => {
+const Products = ({ navigation }) => {
   const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const fetchProducts = async () => {
     try {
@@ -14,7 +16,9 @@ const Products = () => {
       );
       setProducts(data);
     } catch (err) {
-      console.log(err);
+      setError(err);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -22,11 +26,28 @@ const Products = () => {
     fetchProducts();
   }, []);
 
+  const handleProductSelect = (productId) => {
+    navigation.navigate("ProductDetailsPage", { productId });
+  };
+
+  if (isLoading) {
+    return <Text>Loading...</Text>;
+  }
+
+  if (error) {
+    return <Text>Something went wrong!</Text>;
+  }
+
   return (
     <View>
       <FlatList
         data={products}
-        renderItem={({ item }) => <ProductCard product={item} />}
+        renderItem={({ item }) => (
+          <ProductCard
+            product={item}
+            handleProductSelect={() => handleProductSelect(item.id)}
+          />
+        )}
       />
     </View>
   );
