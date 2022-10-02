@@ -12,7 +12,7 @@ const Products = ({ navigation }) => {
   const fetchProducts = async () => {
     try {
       const { data } = await axios.get(
-        "https://api.escuelajs.co/api/v1/products?offset=0&limit=50"
+        "https://api.escuelajs.co/api/v1/products?offset=0&limit=20"
       );
       setProducts(data);
     } catch (err) {

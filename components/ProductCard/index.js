@@ -9,7 +9,7 @@ const ProductCard = ({ product, handleProductSelect }) => {
         <Image
           style={styles.image}
           source={{
-            uri: product.images[0],
+            uri: product.category.image,
           }}
         />
         <View style={styles.body_container}>

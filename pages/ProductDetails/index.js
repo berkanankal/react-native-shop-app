@@ -37,7 +37,7 @@ const ProductDetails = ({ route }) => {
     <View style={styles.container}>
       <Image
         source={{
-          uri: product.images[0],
+          uri: product.category.image,
         }}
         style={styles.image}
       />
